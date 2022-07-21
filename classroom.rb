@@ -1,11 +1,15 @@
-class Classroom 
-    attr_accessor :label
+require_relative 'student'
 
-    def initialize(label)
+class Classroom 
+    attr_accessor :label :students
+
+    def initialize(label, students)
       @label = label
+      @students = students
     end
   
-    def 
-      
+    def add_student(student)
+       @students.push(student)
+       student.classroom = self 
     end
 end
