@@ -55,17 +55,35 @@ class App
                 puts 'Thank you for using this App!'
             end
         end
+
         def list_all_books
             puts 'There are no books yet!.' if @books.empty?
         
             @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
             sleep 0.75
         end
+
         def list_all_people
             puts 'There is not a person yet!.' if @people.empty?
             @people.each { |person| puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
             sleep 0.75
-          end      
+          end
+          
+          def create_person
+            print 'Do you want to create a student (1) or teacher (2) [Input a number]: '
+            person_option = gets.chomp
+
+            case person_option
+            when '1'
+                create_student
+            when '2'
+                create_teacher
+            end
+            puts 'Person created successfully!'
+            puts 'Press enter to continue..!'
+            gets
+            run
+        end
 
 
 end
