@@ -40,7 +40,7 @@ class App
         def get_option(option)
             case option
             when '1'
-                list_all_book
+                list_all_books
             when '2'
                 list_all_people
             when '3'
@@ -55,6 +55,13 @@ class App
                 puts 'Thank you for using this App!'
             end
         end
+        def list_all_books
+            puts 'There are no books yet!.' if @books.empty?
+        
+            @books.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
+            sleep 0.75
+        end
+            
 
 
 end
