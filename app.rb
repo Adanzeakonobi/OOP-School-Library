@@ -8,7 +8,6 @@ require_relative 'classroom'
 class App
   def initialize
     @people = []
-    @books = []
     @rentals = []
     # @classrooms = Classroom.new('Form 5')
   end
@@ -63,14 +62,6 @@ class App
     sleep 0.75
   end
 
-  def list_all_people
-    puts 'There is not a person yet!.' if @people.empty?
-    @people.each do |person|
-      puts "[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-    end
-    sleep 0.75
-  end
-
   def create_person
     print 'Do you want to create a student (1) or teacher (2) [Input a number]: '
     person_option = gets.chomp
@@ -118,21 +109,6 @@ class App
     puts 'Teacher created successfully'
     sleep 0.75
   end
-
-  def create_book
-    print 'Title: '
-    title = gets.chomp
-
-    print 'Author: '
-    author = gets.chomp
-
-    book = Book.new(title, author)
-    @books << book
-
-    puts 'Book added successfully'
-    sleep 0.75
-  end
-end
 
 def create_rental
   puts 'Select a book from the following list by number'
