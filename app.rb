@@ -4,13 +4,11 @@ require_relative 'teacher'
 require_relative 'rental'
 require_relative 'book'
 require_relative 'classroom'
+require_relative 'people_options'
+require_relative 'book_options'
+require_relative 'rental_options'
 
 class App
-  def initialize
-    @rentals = []
-    # @classrooms = Classroom.new('Form 5')
-  end
-
   def menu
     puts
     puts 'Please choose an option by entering a number'
@@ -24,6 +22,7 @@ class App
   end
 
   def run
+    # get_new = Option.new
     puts 'Welcome to school library'
     loop do
       menu
@@ -36,54 +35,24 @@ class App
   end
 
   def get_option(option)
+    @people_options = PeopleOptions.new
+    @book_options = BookOptions.new
+    @rental_options = RentalOptions.new
     case option
     when '1'
-      list_all_books
+      @book_options.list_all_books
     when '2'
-      list_all_people
+      @people_options.list_all_people
     when '3'
-      create_person
+      @people_options.create_person
     when '4'
-      create_book
+      @book_options.create_book
     when '5'
-      create_rental
+      @rental_options.create_rental
     when '6'
-      list_rentals_by_person_id
+      @rental_options.list_rentals_by_person_id
     else
       puts 'Thank you for using this App!'
     end
   end
-
-def create_rental
-  puts 'Select a book from the following list by number'
-  @books.each_with_index { |book, index| puts "#{index}) Title: #{book.title}, Author: #{book.author}" }
-
-  book_id = gets.chomp.to_i
-
-  puts 'Select a person from the following list by number (not id)'
-  @people.each_with_index do |person, index|
-    puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
-  end
-
-  person_id = gets.chomp.to_i
-
-  print 'Date: '
-  date = gets.chomp.to_s
-
-  rental = Rental.new(date, @books[book_id], @people[person_id])
-  @rentals << rental
-
-  puts 'Rental created successfully'
-  sleep 0.75
-end
-
-def list_rentals_by_person_id
-  print 'ID of person: '
-  id = gets.chomp.to_i
-
-  puts 'Rentals:'
-  @rentals.each do |rental|
-    puts "Date: #{rental.date}, Book '#{rental.book.title}' by #{rental.book.author}" if rental.person.id == id
-  end
-  sleep 0.75
 end
