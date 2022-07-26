@@ -49,8 +49,8 @@ def load_people
     filename = 'person.json'
     if file.exist? filename
         data = load_data(filename)
-        data.each do |person|
-            if person['key'] == 'Teacher'
+        data.map do |person|
+            if person['key'] == 'teacher'
                 Teacher.new(person['specialization'], person['age'], person['name'])
             else
                 Student.new(person['classroom'], person[age], person['name'], person['parent_permission'])
@@ -65,7 +65,7 @@ def load_books
     filename = 'books.json'
     if File.exist? filename
       data = load_data(filename)
-      data.each do |book|
+      data.map do |book|
         Book.new(book['title'], book['author'] )
       end
     else
