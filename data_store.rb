@@ -17,9 +17,16 @@ module DataStore
             if person.instance_of?(Teacher)
                 data << ({key: 'teacher', id: person.id, age: person.age, name: person.name, specialization: person.specialization})
             else
-                data << ({key: 'teacher', id: person.id, age: person.age, name: person.name, parent_permission: person.parent_permission, classroom: person.classroom})
+                data << ({key: 'teacher', id: person.id, age: person.age, name: person.name, parent_permission: person.parent_permission, classroom: person.classroom.label})
             end
             save_data('person.json', data)
         end
     end
-end
+
+    def save_rentals
+        data = []
+        @rentals.each do |rental|
+            data << ({date: rental.date, book: rental.book.id, person: rental.person.id})
+            save_data('person.json', data)
+    end
+
