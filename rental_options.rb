@@ -6,7 +6,7 @@ class RentalOptions
   attr_reader :books, :people
 
   def initialize
-    @rentals = []
+    @rentals = load_rentals
   end
 
   def create_rental

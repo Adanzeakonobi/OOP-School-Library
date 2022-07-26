@@ -73,3 +73,26 @@ def load_books
     end
 end
 
+def get_person(id)
+    @people.each { |person| return person if person.id == id }
+  end
+
+  def get_book(title)
+    @books.each { |book| return book if book.title == title }
+  end
+
+  def load_rentals
+    filename = 'rentals.json'
+    if File.exist? filename
+      data = load_data(filename)
+      data.map do |rental|
+        person = get_person(rental['person'])
+        book = get_book(rental['book'])
+        Rental.new(rental['date'], book, person)
+      end
+    else
+      []
+    end
+  end
+end
+
