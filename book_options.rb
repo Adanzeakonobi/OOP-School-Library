@@ -5,7 +5,7 @@ class BookOptions
   attr_reader :books
 
   def initialize
-    @books = []
+    @books = load_books
   end
 
   def list_all_books

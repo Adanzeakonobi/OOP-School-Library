@@ -51,14 +51,25 @@ def load_people
         data = load_data(filename)
         data.each do |person|
             if person['key'] == 'Teacher'
-                Teacher.new(specialization: person['specialization'], age: person['age'], name: person['name'])
+                Teacher.new(person['specialization'], person['age'], person['name'])
             else
-                Student.new(classroom: person['classroom'], age: person[age], name: person['name'],
-                parent_permission: person['parent_permission'])
+                Student.new(person['classroom'], person[age], person['name'], person['parent_permission'])
             end
         end
     else
         []
+    end
+end
+
+def load_books
+    filename = 'books.json'
+    if File.exist? filename
+      data = load_data(filename)
+      data.each do |book|
+        Book.new(book['title'], book['author'] )
+      end
+    else
+      []
     end
 end
 
