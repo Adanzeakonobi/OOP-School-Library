@@ -1,4 +1,5 @@
 require_relative 'rental_options'
+require_relative 'data_store'
 
 class BookOptions
   attr_reader :books

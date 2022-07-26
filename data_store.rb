@@ -1,4 +1,10 @@
 require 'json'
+require_relative 'person'
+require_relative 'book_options'
+require_relative 'people_options'
+require_relative 'rental_options'
+require_relative 'rental'
+require_relative 'book'
 
 module DataStore
     def save_data(filename, data)
@@ -28,6 +34,7 @@ module DataStore
         @rentals.each do |rental|
             data << ({date: rental.date, book: rental.book.id, person: rental.person.id})
             save_data('rental.json', data)
+        end
     end
 
     def save_books
@@ -35,7 +42,23 @@ module DataStore
         @books.each do |book|
             data << ({title: book.title, author: book.author})
             save_data('books.json', data)
+        end
+    end
+
+def load_people
+    filename = 'person.json'
+    if file.exist? filename
+        data = load_data(filename)
+        data.each do |person|
+            if person['key'] == 'Teacher'
+                Teacher.new(specialization: person['specialization'], age: person['age'], name: person['name'])
+            else
+                Student.new(classroom: person['classroom'], age: person[age], name: person['name'],
+                parent_permission: person['parent_permission'])
+            end
+        end
+    else
+        []
     end
 end
-
 

@@ -1,0 +1,6 @@
+[{"key":"teacher","id":449,"age":23,"name":"Jesu","specialization":"dxcghbj"},
+{"key":"teacher","id":678,"age":45,"name":"Mark","specialization":"ghfghghjj"},
+{"key":"student","id":508,"age":32,"name":"Messi","parent_permission":"y","classroom":"#<Classroom:0x000055d7a7042520>"},
+{"key":"student","id":795,"age":15,"name":"Donald","parent_permission":"y","classroom":"#<Classroom:0x000055d7a7042070>"},
+{"key":"teacher","id":359,"age":55,"name":"Ajunwa","specialization":"dsdfghkj"},
+{"key":"student","id":554,"age":82,"name":"Alex","parent_permission":"y","classroom":"Form 5"}]

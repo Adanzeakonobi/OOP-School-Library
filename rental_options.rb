@@ -1,5 +1,6 @@
 require './book_options'
 require './people_options'
+require_relative 'data_store'
 
 class RentalOptions
   attr_reader :books, :people

@@ -1,8 +1,10 @@
+require_relative 'data_store'
+
 class PeopleOptions
   attr_reader :person
 
   def initialize
-    @people = []
+    @people = load_people
   end
 
   def list_all_people
