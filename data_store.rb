@@ -27,6 +27,15 @@ module DataStore
         data = []
         @rentals.each do |rental|
             data << ({date: rental.date, book: rental.book.id, person: rental.person.id})
-            save_data('person.json', data)
+            save_data('rental.json', data)
     end
+
+    def save_books
+        data = []
+        @books.each do |book|
+            data << ({title: book.title, author: book.author})
+            save_data('books.json', data)
+    end
+end
+
 
